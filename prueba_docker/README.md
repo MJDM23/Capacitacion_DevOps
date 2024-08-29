@@ -16,9 +16,9 @@ docker run -d -p 8000:8000 python-api
 Este comando ejecutará el contenedor en segundo plano (opción `-d`) y mapeará el puerto 8000 del contenedor al puerto 8000 de tu máquina local.
 
 ### 3.Probar los endpoints:
-Para probar los endpoints abrir el navegador web y acceder a las siguientes URLs:
-http://localhost:8000/lista-ordenada?lista-no-ordenada=[5,4,7,2,7,2]
-http://localhost:8000/healthcheck
+Para probar los endpoints abrir el navegador web y acceder a las siguientes URLs:  
+http://localhost:8000/lista-ordenada?lista-no-ordenada=[5,4,7,2,7,2]  
+http://localhost:8000/healthcheck  
 
 
 o ejecutar desde la terminal los siguientes comandos:
