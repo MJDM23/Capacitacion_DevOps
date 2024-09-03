@@ -1,4 +1,4 @@
-# capacitacion_devops
+# Capacitación DevOps
 Ejercicios de pruebas para afianzar conocimientos en DevOps.
 
 ## API dentro de un contenedor de Docker
