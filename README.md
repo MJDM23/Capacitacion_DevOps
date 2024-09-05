@@ -30,3 +30,12 @@ curl -g -X GET "http://localhost:8000/lista-ordenada?lista-no-ordenada=[5,4,7,2,
 curl -X GET "http://localhost:8000/healthcheck"
 ```
 la opción `-g` en el primer comando desactiva el globbing (curl interpreta los corchetes [] como caracteres especiales para el globbing de URLs, por lo que si no se desactiva lanzará error la petición)
+
+**Nota**: para verificar el funcionamiento correcto del .dockerignore, se pueden ver los archivos dentro del contenedor desde una terminal (luego de realizar los pasos **1** y **2**). Para ejecutar una terminal dentro del contenedor:
+```
+docker exec -it <id_contenedor> bash
+```
+donde el id_contenedor se puede ver ejecutando el comando:
+```
+docker ps -a
+```
