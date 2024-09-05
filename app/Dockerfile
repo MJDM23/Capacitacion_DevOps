@@ -1,10 +1,13 @@
 FROM python:3.12.5-slim
 
-COPY main.py /opt/python-api/
+# deshabilitar la escritura de archivos de bytecode (__pycache__)
+# para verificar funcionamiento correcto de .dockerignore:
+# ENV PYTHONDONTWRITEBYTECODE=1
+
+COPY . /opt/python-api/
 
 WORKDIR /opt/python-api/
 
-COPY requirements.txt /opt/python-api/
 RUN pip install -r requirements.txt
 
 ENTRYPOINT ["uvicorn", "main:app"]
