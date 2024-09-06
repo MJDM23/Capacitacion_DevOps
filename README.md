@@ -35,7 +35,19 @@ la opción `-g` en el primer comando desactiva el globbing (curl interpreta los 
 ```
 docker exec -it <id_contenedor> bash
 ```
-donde el id_contenedor se puede ver ejecutando el comando:
+donde el ID del contenedor se puede ver ejecutando el comando:
 ```
 docker ps -a
 ```
+
+## Integración de MongoDB
+
+Ejercicio de creación de una red de MongoDB e integración al API. Para crear la red, ejecutar:
+```
+docker network create mongodb-net
+```
+Ahora, para correr el contenedor de MongoDB:
+```
+docker run -d --name mongodb --network mongodb-net mongo:8.0.0-rc19-noble
+```
+donde `-d` ejecuta el contenedor en segundo plano, `--name mongodb` le da un nombre al contenedor, y `--network mongodb-net` asocia el contenedor a la red creada.
