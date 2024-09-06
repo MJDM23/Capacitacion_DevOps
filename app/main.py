@@ -12,7 +12,7 @@ app = FastAPI()
 @app.get("/guardar-lista-no-ordenada")
 def guardar_lista_no_ordenada(
     lista_no_ordenada: str = Query(..., alias="lista-no-ordenada")
-):
+) -> dict:
     """Endpoint que recibe una lista no ordenada, la guarda en MongoDB y devuelve un
     mensaje con el ID asignado.
 
@@ -53,7 +53,7 @@ def guardar_lista_no_ordenada(
 
 
 @app.get("/healthcheck")
-def healthcheck():
+def healthcheck() -> str:
     """Endpoint para verificar el estado de salud del servicio.
 
     Returns:
@@ -71,7 +71,9 @@ def healthcheck():
 
 
 @app.get("/lista-ordenada")
-def lista_ordenada(lista_no_ordenada: str = Query(..., alias="lista-no-ordenada")):
+def lista_ordenada(
+    lista_no_ordenada: str = Query(..., alias="lista-no-ordenada")
+) -> dict:
     """Endpoint que recibe una lista no ordenada y devuelve la lista ordenada junto
     con la hora del sistema.
 
