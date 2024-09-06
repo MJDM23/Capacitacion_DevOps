@@ -60,5 +60,5 @@ de esta manera conectaremos a este la red de mongo creada. Para probar el nuevo 
 curl -g -X GET "http://localhost:8000/guardar-lista-no-ordenada?lista-no-ordenada=[5,4,7,2,7,2]"
 ```
 
-o ingresar desde el navegador a la URL:
+o ingresar desde el navegador a la URL:  
 http://localhost:8000/guardar-lista-no-ordenada?lista-no-ordenada=[5,4,7,2,7,2]
