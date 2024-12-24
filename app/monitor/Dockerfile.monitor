@@ -1,0 +1,10 @@
+FROM python:3.12.5-slim
+
+WORKDIR /opt/monitor
+
+COPY monitor_script.py /opt/monitor/
+
+RUN mkdir -p /opt/monitor/logs
+RUN pip install requests
+
+ENTRYPOINT ["python", "api_monitor.py"]
