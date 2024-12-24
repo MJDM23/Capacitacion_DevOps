@@ -1,0 +1,63 @@
+services:
+  python-api:
+    build:
+      context: .
+    image: python-api:latest
+    container_name: python-api
+    hostname: python-api
+    networks:
+      - mongodb-net
+      - api-network
+    restart: on-failure
+    depends_on:
+      - mongodb
+    ports:
+      - '8000:8000'
+    environment:
+      MONGODB_HOST: ${MONGODB_HOST}
+      MONGODB_PORT: ${MONGODB_PORT}
+      TZ: ${TZ}
+    volumes:
+      - ./volumes/logs/info.log:/opt/python-api/logs/info.log
+    profiles:
+      - api
+
+  api-monitor:
+    build:
+      context: ./monitor
+      dockerfile: Dockerfile.monitor
+    image: api-monitor:latest
+    container_name: api-monitor
+    volumes:
+      - ./volumes/logs/api-monitor.log:/opt/monitor/logs/api-monitor.log
+    environment:
+      TARGET_CONTAINER_HOST: ${TARGET_CONTAINER_HOST}
+      TARGET_CONTAINER_PORT: ${TARGET_CONTAINER_PORT}
+      CHECK_INTERVAL: ${CHECK_INTERVAL}
+      TZ: ${TZ}
+    networks:
+      - api-network
+    depends_on:
+      - python-api
+    restart: always
+
+  mongodb:
+    image: mongo:latest
+    container_name: mongodb
+    hostname: mongodb
+    networks:
+      - mongodb-net
+    restart: on-failure
+    ports:
+      - '27017:27017'
+    volumes:
+      - mongodb-data:/data/db
+    profiles:
+      - etl
+
+networks:
+  mongodb-net:
+  api-network:
+
+volumes:
+  mongodb-data:
