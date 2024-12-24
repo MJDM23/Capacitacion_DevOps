@@ -62,3 +62,23 @@ curl -g -X GET "http://localhost:8000/guardar-lista-no-ordenada?lista-no-ordenad
 
 o ingresar desde el navegador a la URL:  
 http://localhost:8000/guardar-lista-no-ordenada?lista-no-ordenada=[5,4,7,2,7,2]
+
+
+## Integración del contenedor de monitoreo
+
+Ejercicio para implementar un contenedor de monitoreo que verifique la salud del contenedor de la API.
+Ahora, se podrán ejecutar los contenedores con:
+```
+docker-compose up --build -d
+```
+Esto ejecutará:
+- python-api: La API principal.
+- mongodb: La base de datos MongoDB.
+- api-monitor: El contenedor de monitoreo.
+
+Los logs generados por el script de monitoreo se almacenarán en ./volumes/logs/api-monitor.log.
+
+Para ver el contenido de los logs en tiempo real:
+```
+tail -f ./volumes/logs/api-monitor.log
+```
