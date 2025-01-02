@@ -69,7 +69,7 @@ http://localhost:8000/guardar-lista-no-ordenada?lista-no-ordenada=[5,4,7,2,7,2]
 Ejercicio para implementar un contenedor de monitoreo que verifique la salud del contenedor de la API.
 Ahora, se podrán ejecutar los contenedores con:
 ```
-docker-compose up --build -d
+docker compose --profile api up --build -d
 ```
 Esto ejecutará:
 - python-api: La API principal.
