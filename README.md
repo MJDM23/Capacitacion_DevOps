@@ -14,7 +14,7 @@ docker build -t python-api .
 ### 2.Ejecutar el contenedor: 
 Una vez la imagen se haya construido correctamente, se puede ejecutar el contenedor con el siguiente comando:
 ```
-docker run -d -p 8000:8000 python-api
+docker compose --profile api --profile etl up --build -d
 ```
 Este comando ejecutará el contenedor en segundo plano (opción `-d`) y mapeará el puerto 8000 del contenedor al puerto 8000 de tu máquina local.
 
